@@ -10,6 +10,7 @@ import android.widget.TextView
 
 class ListAdapter(context: Context, objects: List<ListItem>) :
     ArrayAdapter<ListItem>(context, R.layout.listitemdesign, objects) {
+
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         val v: View = convertView ?: (context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater)
                                         .inflate(R.layout.listitemdesign, null)
