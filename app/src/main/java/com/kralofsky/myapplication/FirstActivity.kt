@@ -2,6 +2,7 @@ package com.kralofsky.myapplication
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -22,6 +23,10 @@ class FirstActivity : AppCompatActivity() {
         mySecondActivityButton.setOnClickListener {
             val intent = Intent(this, SecondActivity::class.java)
             startActivity(intent)
+        }
+
+        findViewById<Button>(R.id.remove_useless_button).setOnClickListener {
+            findViewById<Button>(R.id.useless_button).visibility = View.GONE
         }
     }
 }
