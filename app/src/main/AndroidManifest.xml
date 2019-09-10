@@ -14,6 +14,7 @@
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
-        <activity android:name=".SecondActivity" />
+        <activity android:name=".ListActivity" />
+        <activity android:name=".AddActivity" />
     </application>
 </manifest>

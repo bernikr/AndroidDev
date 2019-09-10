@@ -14,19 +14,17 @@ class FirstActivity : AppCompatActivity() {
 
         val myButton: Button = findViewById(R.id.button)
         val myTextField: TextView = findViewById(R.id.textView)
-        val mySecondActivityButton: Button = findViewById(R.id.button2)
 
         myButton.setOnClickListener {
             myTextField.text = myTextField.text.toString() + "\nNew Line!"
         }
 
-        mySecondActivityButton.setOnClickListener {
-            val intent = Intent(this, SecondActivity::class.java)
-            startActivity(intent)
-        }
-
         findViewById<Button>(R.id.remove_useless_button).setOnClickListener {
             findViewById<Button>(R.id.useless_button).visibility = View.GONE
+        }
+
+        findViewById<Button>(R.id.add_view_button).setOnClickListener {
+            startActivity(Intent(this, AddActivity::class.java))
         }
     }
 }

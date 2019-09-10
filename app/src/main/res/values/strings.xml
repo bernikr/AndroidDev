@@ -5,4 +5,9 @@
     <string name="second_activity_button">Second Activity</string>
     <string name="useless_button">Useless Button</string>
     <string name="remove_useless_button">Remove Useless Button</string>
+    <string name="title">Title</string>
+    <string name="description">Description</string>
+    <string name="add">Add</string>
+    <string name="add_view">\"Add\" View</string>
+    <string name="show_list">Show List</string>
 </resources>
