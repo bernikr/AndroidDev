@@ -13,12 +13,18 @@ class AddActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.addactivitylayout)
 
+        val titleField = findViewById<EditText>(R.id.addActivity_title)!!
+        val descriptionField = findViewById<EditText>(R.id.addActivity_description)!!
+
         findViewById<Button>(R.id.addActivity_button).setOnClickListener {
             val element = ListItem(
-                findViewById<EditText>(R.id.addActivity_title).text.toString(),
+                titleField.text.toString(),
                 R.mipmap.ic_launcher,
-                findViewById<EditText>(R.id.addActivity_description).text.toString()
+                descriptionField.text.toString()
             )
+
+            titleField.text.clear()
+            descriptionField.text.clear()
 
             itemList.add(element)
         }
