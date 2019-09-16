@@ -1,4 +1,4 @@
-package com.kralofsky.myapplication
+package com.kralofsky.cipherbox
 
 import android.content.Intent
 import android.os.Bundle

@@ -1,4 +1,4 @@
-package com.kralofsky.myapplication
+package com.kralofsky.cipherbox
 
 import android.content.Context
 import android.view.LayoutInflater

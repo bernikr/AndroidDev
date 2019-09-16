@@ -1,4 +1,4 @@
-package com.kralofsky.myapplication
+package com.kralofsky.cipherbox
 
 import android.os.Bundle
 import android.os.Parcelable
