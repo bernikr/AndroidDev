@@ -8,13 +8,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme" >
-        <activity android:name=".FirstActivity">
+        <activity android:name=".MainMenuActivity">
             <intent-filter>
                 <category android:name="android.intent.category.LAUNCHER" />
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
-        <activity android:name=".ListActivity" />
-        <activity android:name=".AddActivity" />
+        <activity android:name=".lab1.Lab1Activity" />
+        <activity android:name=".lab1.ListActivity" />
+        <activity android:name=".lab1.AddActivity" />
     </application>
 </manifest>

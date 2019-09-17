@@ -1,9 +1,10 @@
-package com.kralofsky.cipherbox
+package com.kralofsky.cipherbox.lab1
 
 import android.os.Bundle
 import android.os.Parcelable
 import android.widget.ListView
 import androidx.appcompat.app.AppCompatActivity
+import com.kralofsky.cipherbox.R
 
 class ListActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -17,6 +18,7 @@ class ListActivity : AppCompatActivity() {
             if (i is ListItem)
                 items.add(i)
 
-        findViewById<ListView>(R.id.listView).adapter = ListAdapter(this, items)
+        findViewById<ListView>(R.id.listView).adapter =
+            ListAdapter(this, items)
     }
 }

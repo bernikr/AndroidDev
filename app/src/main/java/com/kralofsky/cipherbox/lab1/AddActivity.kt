@@ -1,10 +1,11 @@
-package com.kralofsky.cipherbox
+package com.kralofsky.cipherbox.lab1
 
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
+import com.kralofsky.cipherbox.R
 
 class AddActivity : AppCompatActivity() {
     private val itemList : MutableList<ListItem> = ArrayList()

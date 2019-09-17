@@ -1,4 +1,4 @@
-package com.kralofsky.cipherbox
+package com.kralofsky.cipherbox.lab1
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,8 +6,17 @@ import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.kralofsky.cipherbox.MainMenuEntry
+import com.kralofsky.cipherbox.R
 
-class FirstActivity : AppCompatActivity() {
+class Lab1Activity : AppCompatActivity() {
+    companion object : MainMenuEntry {
+        override val name = "Lab 1"
+        override val description = ""
+        override val imageId = R.mipmap.ic_launcher
+        override val activity = Lab1Activity::class
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.firstactivitylayout)

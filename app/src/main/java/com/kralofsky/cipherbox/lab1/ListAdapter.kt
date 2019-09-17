@@ -1,4 +1,4 @@
-package com.kralofsky.cipherbox
+package com.kralofsky.cipherbox.lab1
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -7,9 +7,11 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.ImageView
 import android.widget.TextView
+import com.kralofsky.cipherbox.R
 
 class ListAdapter(context: Context, objects: List<ListItem>) :
-    ArrayAdapter<ListItem>(context, R.layout.listitemdesign, objects) {
+    ArrayAdapter<ListItem>(context,
+        R.layout.listitemdesign, objects) {
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         val v: View = convertView ?: (context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater)
