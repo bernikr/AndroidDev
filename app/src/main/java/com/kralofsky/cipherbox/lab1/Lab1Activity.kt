@@ -19,7 +19,7 @@ class Lab1Activity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.firstactivitylayout)
+        setContentView(R.layout.lab1activitylayout)
 
         val myButton: Button = findViewById(R.id.button)
         val myTextField: TextView = findViewById(R.id.textView)

@@ -9,7 +9,7 @@ import com.kralofsky.cipherbox.R
 class ListActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.listactivitylayout)
+        setContentView(R.layout.lab1listactivitylayout)
 
         val rawItems = intent.extras?.getParcelableArray("list") ?: arrayOf<Parcelable>()
         val items: MutableList<ListItem> = ArrayList()

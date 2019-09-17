@@ -17,5 +17,6 @@
         <activity android:name=".lab1.Lab1Activity" />
         <activity android:name=".lab1.ListActivity" />
         <activity android:name=".lab1.AddActivity" />
+        <activity android:name=".lab1.DisplayActivity" />
     </application>
 </manifest>

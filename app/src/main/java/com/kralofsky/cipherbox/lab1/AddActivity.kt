@@ -12,7 +12,7 @@ class AddActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.addactivitylayout)
+        setContentView(R.layout.lab1addactivitylayout)
 
         val titleField = findViewById<EditText>(R.id.addActivity_title)!!
         val descriptionField = findViewById<EditText>(R.id.addActivity_description)!!

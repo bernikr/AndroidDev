@@ -1,12 +1,15 @@
 package com.kralofsky.cipherbox.lab1
 
 import android.content.Context
+import android.content.Intent
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.content.ContextCompat.startActivity
 import com.kralofsky.cipherbox.R
 
 class ListAdapter(context: Context, objects: List<ListItem>) :
@@ -22,6 +25,12 @@ class ListAdapter(context: Context, objects: List<ListItem>) :
         v.findViewById<TextView>(R.id.title).text = item.title
         v.findViewById<TextView>(R.id.description).text = item.description
         v.findViewById<ImageView>(R.id.imageView).setImageResource(item.imageId)
+
+        v.setOnClickListener {
+            val intent = Intent(context, DisplayActivity::class.java)
+            intent.putExtra("item", item)
+            startActivity(context, intent, Bundle.EMPTY)
+        }
 
         return v
     }
