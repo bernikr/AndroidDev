@@ -5,7 +5,7 @@
     android:orientation="horizontal">
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/listitemimg"
         android:layout_width="60dp"
         android:layout_height="60dp" />
 
@@ -16,13 +16,13 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/title"
+            android:id="@+id/listitemtitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="18sp" />
 
         <TextView
-            android:id="@+id/description"
+            android:id="@+id/listitemdescription"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="12sp" />

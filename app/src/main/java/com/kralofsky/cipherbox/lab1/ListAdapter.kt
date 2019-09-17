@@ -22,9 +22,9 @@ class ListAdapter(context: Context, objects: List<ListItem>) :
 
         val item = getItem(position)!!
 
-        v.findViewById<TextView>(R.id.title).text = item.title
-        v.findViewById<TextView>(R.id.description).text = item.description
-        v.findViewById<ImageView>(R.id.imageView).setImageResource(item.imageId)
+        v.findViewById<TextView>(R.id.listitemtitle).text = item.title
+        v.findViewById<TextView>(R.id.listitemdescription).text = item.description
+        v.findViewById<ImageView>(R.id.listitemimg).setImageResource(item.imageId)
 
         v.setOnClickListener {
             val intent = Intent(context, DisplayActivity::class.java)

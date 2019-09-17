@@ -47,9 +47,9 @@ class MainMenuAdapter(context: Context, objects: List<MainMenuEntry>) :
 
         val item = getItem(position)!!
 
-        v.findViewById<TextView>(R.id.title).text = item.name
-        v.findViewById<TextView>(R.id.description).text = item.description
-        v.findViewById<ImageView>(R.id.imageView).setImageResource(item.imageId)
+        v.findViewById<TextView>(R.id.listitemtitle).text = item.name
+        v.findViewById<TextView>(R.id.listitemdescription).text = item.description
+        v.findViewById<ImageView>(R.id.listitemimg).setImageResource(item.imageId)
 
         v.setOnClickListener {
             startActivity(context, Intent(context, item.activity.java), Bundle.EMPTY)

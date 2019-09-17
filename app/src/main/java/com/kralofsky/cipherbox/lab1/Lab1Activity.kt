@@ -21,18 +21,18 @@ class Lab1Activity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.lab1activitylayout)
 
-        val myButton: Button = findViewById(R.id.button)
-        val myTextField: TextView = findViewById(R.id.textView)
+        val myButton: Button = findViewById(R.id.lab1button)
+        val myTextField: TextView = findViewById(R.id.lab1textView)
 
         myButton.setOnClickListener {
             myTextField.text = myTextField.text.toString() + "\nNew Line!"
         }
 
-        findViewById<Button>(R.id.remove_useless_button).setOnClickListener {
-            findViewById<Button>(R.id.useless_button).visibility = View.GONE
+        findViewById<Button>(R.id.lab1remove_useless_button).setOnClickListener {
+            findViewById<Button>(R.id.lab1useless_button).visibility = View.GONE
         }
 
-        findViewById<Button>(R.id.add_view_button).setOnClickListener {
+        findViewById<Button>(R.id.lab1add_view_button).setOnClickListener {
             startActivity(Intent(this, AddActivity::class.java))
         }
     }

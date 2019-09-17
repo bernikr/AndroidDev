@@ -14,10 +14,10 @@ class AddActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.lab1addactivitylayout)
 
-        val titleField = findViewById<EditText>(R.id.addActivity_title)!!
-        val descriptionField = findViewById<EditText>(R.id.addActivity_description)!!
+        val titleField = findViewById<EditText>(R.id.lab1addActivity_title)!!
+        val descriptionField = findViewById<EditText>(R.id.lab1addActivity_description)!!
 
-        findViewById<Button>(R.id.addActivity_button).setOnClickListener {
+        findViewById<Button>(R.id.lab1addActivity_button).setOnClickListener {
             val element = ListItem(
                 titleField.text.toString(),
                 R.mipmap.ic_launcher,
@@ -30,7 +30,7 @@ class AddActivity : AppCompatActivity() {
             itemList.add(element)
         }
 
-        findViewById<Button>(R.id.AddActivity_show_list_button).setOnClickListener {
+        findViewById<Button>(R.id.lab1AddActivity_show_list_button).setOnClickListener {
             val intent = Intent(this, ListActivity::class.java)
             intent.putExtra("list", itemList.toTypedArray())
             startActivity(intent)

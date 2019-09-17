@@ -18,7 +18,7 @@ class ListActivity : AppCompatActivity() {
             if (i is ListItem)
                 items.add(i)
 
-        findViewById<ListView>(R.id.listView).adapter =
+        findViewById<ListView>(R.id.lab1listView).adapter =
             ListAdapter(this, items)
     }
 }
