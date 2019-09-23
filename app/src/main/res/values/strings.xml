@@ -12,4 +12,6 @@
     <string name="show_list">Show List</string>
     <string name="sort_a_z">Sort A-Z</string>
     <string name="filter_list">filter list</string>
+    <string name="clear_text">Clear Text</string>
+    <string name="cipher_text">Cipher Text</string>
 </resources>

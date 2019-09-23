@@ -20,9 +20,11 @@ class MainMenuActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.mainmenulayout)
 
-        val items: MutableList<MainMenuEntry> = ArrayList()
+        val items = listOf(
+            *ciphers.toTypedArray(),
+            Lab1Activity
+        )
 
-        items.add(Lab1Activity)
 
         findViewById<ListView>(R.id.mainmenulist).adapter = MainMenuAdapter(this, items)
     }
@@ -35,7 +37,6 @@ interface MainMenuEntry {
     val imageId: Int
     val activity: KClass<out AppCompatActivity>
 }
-
 
 
 class MainMenuAdapter(context: Context, objects: List<MainMenuEntry>) :
@@ -52,7 +53,10 @@ class MainMenuAdapter(context: Context, objects: List<MainMenuEntry>) :
         v.findViewById<ImageView>(R.id.listitemimg).setImageResource(item.imageId)
 
         v.setOnClickListener {
-            startActivity(context, Intent(context, item.activity.java), Bundle.EMPTY)
+            val intent = Intent(context, item.activity.java)
+            if (item is Cipher)
+                intent.putExtra("cipherID", ciphers.indexOf(item))
+            startActivity(context, intent, Bundle.EMPTY)
         }
 
         return v

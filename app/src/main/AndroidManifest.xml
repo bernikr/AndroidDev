@@ -18,5 +18,6 @@
         <activity android:name=".lab1.ListActivity" />
         <activity android:name=".lab1.AddActivity" />
         <activity android:name=".lab1.DisplayActivity" />
+        <activity android:name=".CipherActivity" />
     </application>
 </manifest>
