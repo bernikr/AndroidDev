@@ -32,6 +32,11 @@ class ListAdapter(context: Context, objects: List<ListItem>) :
             startActivity(context, intent, Bundle.EMPTY)
         }
 
+        v.setOnLongClickListener {
+            remove(item)
+            true
+        }
+
         return v
     }
 }
