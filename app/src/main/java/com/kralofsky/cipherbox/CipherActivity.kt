@@ -5,9 +5,10 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.EditText
 import android.widget.LinearLayout
-import android.widget.RelativeLayout
 import androidx.appcompat.app.AppCompatActivity
 
 
@@ -53,6 +54,20 @@ class CipherActivity : AppCompatActivity() {
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
         })
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.cipher_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
+        R.id.action_info -> {
+            // User chose the "Settings" item, show the app settings UI...
+            true
+        }
+
+        else -> super.onOptionsItemSelected(item)
     }
 }
 

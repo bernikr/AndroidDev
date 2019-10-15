@@ -2,12 +2,13 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <EditText
         android:id="@+id/cipherview_cleartext"
+        style="@android:style/Widget.Material.EditText"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:hint="@string/clear_text"
@@ -26,7 +27,7 @@
         app:layout_constraintBottom_toTopOf="@+id/cipherview_buttenlayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cipherview_cleartext"/>
+        app:layout_constraintTop_toBottomOf="@+id/cipherview_cleartext" />
 
     <LinearLayout
         android:id="@+id/cipherview_buttenlayout"
@@ -40,21 +41,24 @@
 
         <Button
             android:id="@+id/button5"
+            style="@android:style/TextAppearance.Material.Button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Button" />
+            android:text="Encode" />
 
         <Button
             android:id="@+id/button6"
+            style="@android:style/Widget.Material.Button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Button" />
+            android:text="Decode" />
     </LinearLayout>
 
     <EditText
         android:id="@+id/cipherview_ciphertext"
+        style="@android:style/Widget.Material.EditText"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:hint="@string/cipher_text"

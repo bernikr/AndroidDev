@@ -5,6 +5,10 @@ fun String.mapCharByChar(transform: (Char) -> Char) : String {
     return this.map(transform).joinToString("") { it.toString() }
 }
 
+fun String.mapCharByCharIndexed(transform: (index: Int, Char) -> Char) : String {
+    return this.mapIndexed(transform).joinToString("") { it.toString() }
+}
+
 operator fun Char.plus(other: Char) : Char {
     return this.transformCaseIndependent {
         ((it.toAlphabetInt() + other.toAlphabetInt())%26).toAlphabetChar()
