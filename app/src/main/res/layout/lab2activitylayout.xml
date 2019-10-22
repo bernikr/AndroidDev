@@ -11,8 +11,8 @@
         android:padding="10dp"
         android:background="@drawable/button" />
 
-    <View
-        android:id="@+id/view"
+    <com.kralofsky.cipherbox.IndicatingView
+        android:id="@+id/lab2indicatingView"
         android:layout_width="200dp"
         android:layout_height="200dp"
         android:layout_margin="2dp"

@@ -1,8 +1,10 @@
 package com.kralofsky.cipherbox
 
 import android.content.Context
+import android.graphics.Canvas
+import android.graphics.Color
+import android.graphics.Paint
 import android.os.Bundle
-import android.os.Parcelable
 import android.util.AttributeSet
 import android.view.View
 import android.widget.Button
@@ -35,6 +37,12 @@ class Lab2Activity : AppCompatActivity() {
             ro.listener = { i: Int, post: ModelPost? ->
                 publication = post
                 updatePublication()
+                setIndicatorStatus(
+                    if(i==200 && post != null)
+                        IndicatingView.State.SUCCESS
+                    else
+                        IndicatingView.State.FAILED
+                )
             }
             ro.start()
         }
@@ -44,6 +52,14 @@ class Lab2Activity : AppCompatActivity() {
         runOnUiThread {
             findViewById<TextView>(R.id.lab2title).text = publication?.title
             findViewById<TextView>(R.id.lab2bodyText).text = publication?.bodyText
+        }
+    }
+
+    fun setIndicatorStatus(status: IndicatingView.State){
+        runOnUiThread {
+            val indicator = findViewById<IndicatingView>(R.id.lab2indicatingView)
+            indicator.state = status
+            indicator.invalidate()
         }
     }
 
@@ -105,6 +121,51 @@ class Lab2Activity : AppCompatActivity() {
                 obj.getString("title"),
                 obj.getString("body")
             )
+        }
+    }
+}
+
+class IndicatingView: View {
+    constructor(context: Context?) : super(context)
+    constructor(context: Context?, attrs: AttributeSet?) : super(context, attrs)
+    constructor(context: Context?, attrs: AttributeSet?, defStyleAttr: Int) : super(
+        context,
+        attrs,
+        defStyleAttr
+    )
+
+    constructor(
+        context: Context?,
+        attrs: AttributeSet?,
+        defStyleAttr: Int,
+        defStyleRes: Int
+    ) : super(context, attrs, defStyleAttr, defStyleRes)
+
+    enum class State {
+        NOTEXECUTED, SUCCESS, FAILED
+    }
+
+    var state = State.NOTEXECUTED
+
+    private val paint = Paint()
+
+    override fun onDraw(canvas: Canvas?) {
+        super.onDraw(canvas)
+
+        when(state){
+            State.SUCCESS -> {
+                paint.color = Color.GREEN
+                paint.strokeWidth = 20f
+                canvas?.drawLine(0f,0f,width/2f, height.toFloat(), paint)
+                canvas?.drawLine(width/2f,height.toFloat(),width.toFloat(), height/2f, paint)
+            }
+            State.FAILED -> {
+                paint.color = Color.RED
+                paint.strokeWidth = 20f
+                canvas?.drawLine(0f,0f,width.toFloat(), height.toFloat(), paint)
+                canvas?.drawLine(0f, height.toFloat(), width.toFloat(), 0f, paint)
+            }
+            else -> {}
         }
     }
 }
