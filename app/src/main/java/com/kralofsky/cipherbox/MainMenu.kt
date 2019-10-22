@@ -22,7 +22,8 @@ class MainMenuActivity : AppCompatActivity() {
 
         val items = listOf(
             *ciphers.toTypedArray(),
-            Lab1Activity
+            Lab1Activity,
+            Lab2Activity
         )
 
 
