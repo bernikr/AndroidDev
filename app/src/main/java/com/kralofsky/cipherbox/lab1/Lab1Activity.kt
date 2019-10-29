@@ -13,7 +13,7 @@ class Lab1Activity : AppCompatActivity() {
     companion object : MainMenuEntry {
         override val name = "Lab 1"
         override val description = ""
-        override val imageId = R.mipmap.ic_launcher
+        override val imageId = R.drawable.lab_flask
         override val activity = Lab1Activity::class
     }
 
