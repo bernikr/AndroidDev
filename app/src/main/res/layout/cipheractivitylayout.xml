@@ -40,20 +40,22 @@
         app:layout_constraintTop_toBottomOf="@+id/cipherview_controllcontainerlayout">
 
         <Button
-            android:id="@+id/button5"
+            android:id="@+id/cipherview_btn_encode"
             style="@android:style/TextAppearance.Material.Button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Encode" />
+            android:drawableLeft="@drawable/ic_arrow_downward_black_24dp"
+            android:text="@string/encode" />
 
         <Button
-            android:id="@+id/button6"
+            android:id="@+id/cipherview_btn_decode"
             style="@android:style/Widget.Material.Button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Decode" />
+            android:drawableRight="@drawable/ic_arrow_upward_black_24dp"
+            android:text="@string/decode" />
     </LinearLayout>
 
     <EditText

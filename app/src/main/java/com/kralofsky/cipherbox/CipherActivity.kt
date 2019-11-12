@@ -7,6 +7,7 @@ import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Button
 import android.widget.EditText
 import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
@@ -37,23 +38,15 @@ class CipherActivity : AppCompatActivity() {
         val ciphertext = findViewById<EditText>(R.id.cipherview_ciphertext)
         val cleartext = findViewById<EditText>(R.id.cipherview_cleartext)
 
-        cleartext.addTextChangedListener(object: TextWatcher {
-            override fun afterTextChanged(p0: Editable?) {
-                if (currentFocus == cleartext) ciphertext.setText(cipher.encode(p0.toString()))
-            }
+        findViewById<Button>(R.id.cipherview_btn_encode).setOnClickListener {
+            ciphertext.setText(cipher.encode(cleartext.text.toString()))
+        }
 
-            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
-            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
-        })
+        findViewById<Button>(R.id.cipherview_btn_decode).setOnClickListener {
+            cleartext.setText(cipher.decode(ciphertext.text.toString()))
+        }
 
-        ciphertext.addTextChangedListener(object: TextWatcher {
-            override fun afterTextChanged(p0: Editable?) {
-                if (currentFocus == ciphertext) cleartext.setText(cipher.decode(p0.toString()))
-            }
-
-            override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
-            override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
-        })
+        cipher.init(this)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -77,6 +70,8 @@ abstract class Cipher : MainMenuEntry {
 
     abstract fun encode(cleartext: String) : String
     abstract fun decode(ciphertext: String) : String
+
+    abstract fun init(context: AppCompatActivity)
 }
 
 

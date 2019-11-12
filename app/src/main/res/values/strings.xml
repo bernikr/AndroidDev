@@ -16,4 +16,6 @@
     <string name="cipher_text">Cipher Text</string>
     <string name="information">Information</string>
     <string name="send_request">Send Request</string>
+    <string name="encode">Encode</string>
+    <string name="decode">Decode</string>
 </resources>
