@@ -10,5 +10,9 @@
         android:right="1dp"
         android:top="1dp"
         android:bottom="1dp" />
-    <solid android:color="#00ab4c" />
+    <gradient
+        android:startColor="#52C77A"
+        android:endColor="#00ab4c"
+        android:angle="0"
+        />
 </shape>

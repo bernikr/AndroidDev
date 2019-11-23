@@ -19,6 +19,11 @@
         android:background="#888888" />
 
     <TextView
+        android:id="@+id/lab2number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
         android:id="@+id/lab2title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

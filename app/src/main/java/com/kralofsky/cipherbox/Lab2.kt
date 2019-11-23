@@ -1,22 +1,27 @@
 package com.kralofsky.cipherbox
 
+import android.animation.ValueAnimator
 import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
+import android.graphics.Path
+import android.graphics.Path.FillType
 import android.os.Bundle
 import android.util.AttributeSet
 import android.view.View
+import android.view.animation.LinearInterpolator
 import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import org.json.JSONArray
 import org.json.JSONException
-import org.json.JSONObject
 import java.io.BufferedReader
 import java.io.IOException
 import java.io.InputStreamReader
 import java.net.HttpURLConnection
 import java.net.URL
+
 
 class Lab2Activity : AppCompatActivity() {
     companion object : MainMenuEntry {
@@ -33,19 +38,35 @@ class Lab2Activity : AppCompatActivity() {
         setContentView(R.layout.lab2activitylayout)
 
         findViewById<Button>(R.id.send_request).setOnClickListener {
+            setIndicatorStatus(IndicatingView.State.LOADING)
+
             val ro = RequestOperator()
-            ro.listener = { i: Int, post: ModelPost? ->
-                publication = post
+            ro.listener = { i: Int, posts: List<ModelPost>? ->
+                publication = posts?.get(0)
                 updatePublication()
                 setIndicatorStatus(
-                    if(i==200 && post != null)
+                    if(i==200 && posts != null)
                         IndicatingView.State.SUCCESS
                     else
                         IndicatingView.State.FAILED
                 )
+                findViewById<TextView>(R.id.lab2number).text = "There are ${posts?.size ?: 0} Posts"
             }
             ro.start()
         }
+
+
+        val animator = ValueAnimator.ofFloat(0f, 1f)
+        animator.duration = 1000
+        animator.repeatMode = ValueAnimator.RESTART
+        animator.repeatCount = ValueAnimator.INFINITE
+        animator.interpolator = LinearInterpolator()
+        val indicator = findViewById<IndicatingView>(R.id.lab2indicatingView)
+        animator.addUpdateListener {
+            indicator.animation = it.animatedValue as Float
+            indicator.invalidate()
+        }
+        animator.start()
     }
 
     fun updatePublication(){
@@ -71,7 +92,7 @@ class Lab2Activity : AppCompatActivity() {
     )
 
     private class RequestOperator: Thread() {
-        var listener: ((Int, ModelPost?) -> Unit)? = null
+        var listener: ((Int, List<ModelPost>?) -> Unit)? = null
 
         var responseCode: Int = 0
 
@@ -87,8 +108,8 @@ class Lab2Activity : AppCompatActivity() {
             }
         }
 
-        private fun request(): ModelPost? {
-            val obj = URL("https://jsonplaceholder.typicode.com/posts/1")
+        private fun request(): List<ModelPost>? {
+            val obj = URL("https://jsonplaceholder.typicode.com/posts")
             val con = obj.openConnection() as HttpURLConnection
             con.requestMethod = "GET"
             con.setRequestProperty("Content-Type", "application/json")
@@ -112,15 +133,18 @@ class Lab2Activity : AppCompatActivity() {
             return parsingJsonObject(response)
         }
 
-        private fun parsingJsonObject(response: String): ModelPost {
-            val obj = JSONObject(response)
+        private fun parsingJsonObject(response: String): List<ModelPost> {
+            val arr = JSONArray(response)
 
-            return ModelPost(
-                obj.getInt("id"),
-                obj.getInt("userId"),
-                obj.getString("title"),
-                obj.getString("body")
-            )
+            return (0 until arr.length()).map {
+                val obj = arr.getJSONObject(it)
+                ModelPost(
+                    obj.getInt("id"),
+                    obj.getInt("userId"),
+                    obj.getString("title"),
+                    obj.getString("body")
+                )
+            }
         }
     }
 }
@@ -142,10 +166,11 @@ class IndicatingView: View {
     ) : super(context, attrs, defStyleAttr, defStyleRes)
 
     enum class State {
-        NOTEXECUTED, SUCCESS, FAILED
+        NOTEXECUTED, LOADING, SUCCESS, FAILED
     }
 
     var state = State.NOTEXECUTED
+    var animation = 0f
 
     private val paint = Paint()
 
@@ -165,7 +190,58 @@ class IndicatingView: View {
                 canvas?.drawLine(0f,0f,width.toFloat(), height.toFloat(), paint)
                 canvas?.drawLine(0f, height.toFloat(), width.toFloat(), 0f, paint)
             }
+            State.LOADING -> {
+                paint.color = Color.YELLOW
+                paint.strokeWidth = 0f
+                paint.style = Paint.Style.FILL_AND_STROKE
+
+                val path = Path()
+
+                path.fillType = FillType.EVEN_ODD
+                path.moveTo(width.toFloat()/2, 0f)
+                path.lineTo(0f, width.toFloat())
+                path.lineTo(height.toFloat(), width.toFloat())
+                path.close()
+
+                canvas?.drawPath(path, paint)
+
+                val size = width.toFloat()/3
+
+                paint.color = Color.BLACK
+                paint.strokeWidth = 20f
+                paint.style = Paint.Style.STROKE
+                canvas?.drawArc(
+                    (width-size)/2,
+                    (height-size)/2+height/6,
+                    (width+size)/2,
+                    (height+size)/2+height/6,
+                    animation*360, 270f, false, paint)
+
+
+                val rectNum = 5
+                val currentRects = (animation*(rectNum+1)).toInt()
+                paint.color = Color.GREEN
+                paint.strokeWidth = 0f
+                paint.style = Paint.Style.FILL_AND_STROKE
+
+                for(i in 1 .. currentRects) {
+                    paint.color = Color.rgb(0,
+                        mapRange(FloatRange(1f,rectNum.toFloat()), FloatRange(180f, 40f), i.toFloat()).toInt(),
+                        0)
+                    val rectwidth = width.toFloat()/rectNum
+                    val left = (i-1)*rectwidth
+                    canvas?.drawRect(left, height-50f, left+rectwidth, height.toFloat(), paint)
+                }
+            }
             else -> {}
         }
     }
 }
+
+class FloatRange(override val start: Float, override val endInclusive: Float) : ClosedRange<Float>
+
+fun mapRange(range1: FloatRange, range2: FloatRange, value: Float): Float {
+    require(range1.endInclusive != range1.start) { "first range cannot be single-valued" }
+    return range2.start + (value - range1.start) * (range2.endInclusive - range2.start) / (range1.endInclusive - range1.start)
+}
+
