@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 object VigenereCipher : Cipher() {
     override val name = "Vigenere Cipher"
     override val description = ""
-    override val imageId = R.drawable.ceasar_portrait
+    override val imageId = R.drawable.vigenere_portrait
     override val controlLayout = R.layout.cipher_vigenere
 
     private var key: String = "A"
