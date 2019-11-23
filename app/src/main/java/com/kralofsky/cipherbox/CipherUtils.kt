@@ -1,8 +1,8 @@
 package com.kralofsky.cipherbox
 
 
-fun String.mapCharByChar(transform: (Char) -> Char) : String {
-    return this.map(transform).joinToString("") { it.toString() }
+fun String.mapCharByChar(transform: (Char) -> Char?) : String {
+    return this.map(transform).joinToString("") { it?.toString() ?: "" }
 }
 
 fun String.mapCharByCharIndexed(transform: (index: Int, Char) -> Char) : String {

@@ -13,8 +13,9 @@ import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
 
 
-val ciphers = listOf<Cipher>(
-    CaesarCipher
+val ciphers = listOf(
+    CaesarCipher,
+    VigenereCipher
 )
 
 class CipherActivity : AppCompatActivity() {
