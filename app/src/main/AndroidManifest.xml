@@ -23,5 +23,6 @@
         <activity android:name=".CipherActivity"
             android:windowSoftInputMode="stateHidden|adjustResize" />
         <activity android:name=".Lab2Activity" />
+        <activity android:name=".CipherTheoryActivity" />
     </application>
 </manifest>

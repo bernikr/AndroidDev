@@ -14,6 +14,7 @@ import android.widget.EditText
 import android.widget.LinearLayout
 import android.widget.SimpleCursorAdapter
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import com.kralofsky.cipherbox.CipherBoxDbContract.HistoryEntry
 
 
@@ -109,7 +110,9 @@ class CipherActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
         R.id.action_info -> {
-            // User chose the "Settings" item, show the app settings UI...
+            val intent = Intent(this, CipherTheoryActivity::class.java)
+            intent.putExtra("cipherID", ciphers.indexOf(cipher))
+            ContextCompat.startActivity(this, intent, Bundle.EMPTY)
             true
         }
         R.id.action_share -> {
@@ -178,11 +181,10 @@ class CipherActivity : AppCompatActivity() {
 abstract class Cipher : MainMenuEntry {
     override val activity = CipherActivity::class
     open val controlLayout: Int? = null
+    open val youtube: String? = null
 
     abstract fun encode(cleartext: String) : String
     abstract fun decode(ciphertext: String) : String
 
     abstract fun init(context: AppCompatActivity)
 }
-
-
