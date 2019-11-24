@@ -1,9 +1,8 @@
 package com.kralofsky.cipherbox
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuItem
@@ -36,15 +35,15 @@ class CipherActivity : AppCompatActivity() {
             mainLayout.addView(layout)
         }
 
-        val ciphertext = findViewById<EditText>(R.id.cipherview_ciphertext)
-        val cleartext = findViewById<EditText>(R.id.cipherview_cleartext)
+        val clearText = findViewById<EditText>(R.id.cipherview_cleartext)
+        val cipherText = findViewById<EditText>(R.id.cipherview_ciphertext)
 
         findViewById<Button>(R.id.cipherview_btn_encode).setOnClickListener {
-            ciphertext.setText(cipher.encode(cleartext.text.toString()))
+            cipherText.setText(cipher.encode(clearText.text.toString()))
         }
 
         findViewById<Button>(R.id.cipherview_btn_decode).setOnClickListener {
-            cleartext.setText(cipher.decode(ciphertext.text.toString()))
+            clearText.setText(cipher.decode(cipherText.text.toString()))
         }
 
         cipher.init(this)
@@ -60,7 +59,17 @@ class CipherActivity : AppCompatActivity() {
             // User chose the "Settings" item, show the app settings UI...
             true
         }
+        R.id.action_share -> {
+            val sendIntent: Intent = Intent().apply {
+                action = Intent.ACTION_SEND
+                putExtra(Intent.EXTRA_TEXT, findViewById<EditText>(R.id.cipherview_ciphertext).text.toString())
+                type = "text/plain"
+            }
 
+            val shareIntent = Intent.createChooser(sendIntent, null)
+            startActivity(shareIntent)
+            true
+        }
         else -> super.onOptionsItemSelected(item)
     }
 }
