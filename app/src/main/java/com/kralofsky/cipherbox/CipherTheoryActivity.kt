@@ -2,6 +2,8 @@ package com.kralofsky.cipherbox
 
 import android.os.Bundle
 import android.view.View
+import android.webkit.WebView
+import android.webkit.WebViewClient
 import androidx.appcompat.app.AppCompatActivity
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
@@ -28,6 +30,14 @@ class CipherTheoryActivity : AppCompatActivity() {
             })
         } else {
             youTubePlayerView.visibility = View.GONE
+        }
+
+        val myWebView: WebView = findViewById(R.id.webview)
+        myWebView.webViewClient = WebViewClient()
+
+        val link = cipher.link
+        if (link != null) {
+            myWebView.loadUrl(link)
         }
     }
 }

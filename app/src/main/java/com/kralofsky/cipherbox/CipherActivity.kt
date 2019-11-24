@@ -182,6 +182,7 @@ abstract class Cipher : MainMenuEntry {
     override val activity = CipherActivity::class
     open val controlLayout: Int? = null
     open val youtube: String? = null
+    open val link: String? = null
 
     abstract fun encode(cleartext: String) : String
     abstract fun decode(ciphertext: String) : String
