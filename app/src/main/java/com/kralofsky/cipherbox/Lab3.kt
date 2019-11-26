@@ -9,6 +9,8 @@ import android.hardware.Sensor
 import android.hardware.SensorEvent
 import android.hardware.SensorEventListener
 import android.hardware.SensorManager
+import android.hardware.camera2.CameraAccessException
+import android.hardware.camera2.CameraManager
 import android.location.Location
 import android.location.LocationListener
 import android.location.LocationManager
@@ -79,6 +81,39 @@ class Lab3Activity : SensorEventListener, LocationListener, AppCompatActivity() 
         }
     }
 
+    @Volatile var flashingStatus = false
+
+    private fun startFlashinSOS() {
+        if (!flashingStatus){
+            flashingStatus = true
+            Toast.makeText(this, "SOS", Toast.LENGTH_SHORT).show()
+            Thread {
+                longArrayOf(400, 400, 400, 800, 800, 800, 400, 400, 400).forEach {
+                    flash(it, 400)
+                }
+                flashingStatus = false
+            }.start()
+        }
+    }
+
+    private fun flash(on: Long, off: Long) {
+        setFlashlight(true)
+        Thread.sleep(on)
+        setFlashlight(false)
+        Thread.sleep(off)
+    }
+
+    private fun setFlashlight(state: Boolean){
+        val camManager = getSystemService(Context.CAMERA_SERVICE) as CameraManager
+        try {
+            val cameraId = camManager.cameraIdList[0]
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                camManager.setTorchMode(cameraId, state)
+            }
+        } catch (e: CameraAccessException) {
+            e.printStackTrace()
+        }
+    }
 
     override fun onSensorChanged(event: SensorEvent?) {
         val mySensor = (event?: return).sensor
@@ -124,6 +159,12 @@ class Lab3Activity : SensorEventListener, LocationListener, AppCompatActivity() 
                     )
                 } catch (e: SecurityException){
                     e.printStackTrace()
+                }
+
+                val t = 30f
+                if (values[0] in (180f-t)..(180f+t)
+                    && values[1] in (-90f-t)..(-90f+t)){
+                    startFlashinSOS()
                 }
             }
         }
