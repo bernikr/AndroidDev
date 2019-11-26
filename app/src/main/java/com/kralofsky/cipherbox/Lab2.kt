@@ -2,10 +2,7 @@ package com.kralofsky.cipherbox
 
 import android.animation.ValueAnimator
 import android.content.Context
-import android.graphics.Canvas
-import android.graphics.Color
-import android.graphics.Paint
-import android.graphics.Path
+import android.graphics.*
 import android.graphics.Path.FillType
 import android.os.Bundle
 import android.util.AttributeSet
@@ -181,19 +178,22 @@ class IndicatingView: View {
             State.SUCCESS -> {
                 paint.color = Color.GREEN
                 paint.strokeWidth = 20f
+                paint.pathEffect = null
                 canvas?.drawLine(0f,0f,width/2f, height.toFloat(), paint)
                 canvas?.drawLine(width/2f,height.toFloat(),width.toFloat(), height/2f, paint)
             }
             State.FAILED -> {
                 paint.color = Color.RED
                 paint.strokeWidth = 20f
+                paint.pathEffect = null
                 canvas?.drawLine(0f,0f,width.toFloat(), height.toFloat(), paint)
                 canvas?.drawLine(0f, height.toFloat(), width.toFloat(), 0f, paint)
             }
             State.LOADING -> {
                 paint.color = Color.YELLOW
-                paint.strokeWidth = 0f
-                paint.style = Paint.Style.FILL_AND_STROKE
+                paint.strokeWidth = 20f
+                paint.style = Paint.Style.STROKE
+                paint.pathEffect = DashPathEffect(floatArrayOf(40f, 20f), 0f)
 
                 val path = Path()
 
@@ -210,6 +210,8 @@ class IndicatingView: View {
                 paint.color = Color.BLACK
                 paint.strokeWidth = 20f
                 paint.style = Paint.Style.STROKE
+                paint.pathEffect = null
+
                 canvas?.drawArc(
                     (width-size)/2,
                     (height-size)/2+height/6,
