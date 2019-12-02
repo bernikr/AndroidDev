@@ -10,7 +10,7 @@ object VigenereCipher : Cipher() {
     override val name = "Vigenere Cipher"
     override val description = ""
     override val imageId = R.drawable.vigenere_portrait
-    override val controlLayout = R.layout.cipher_vigenere
+    override val controlLayout = R.layout.cipher_single_key
     override val link = "https://en.wikipedia.org/wiki/Vigen%C3%A8re_cipher"
 
     private var key: String = "A"
@@ -20,7 +20,7 @@ object VigenereCipher : Cipher() {
     override fun decode(ciphertext: String): String = ciphertext.mapCharByCharIndexed { i, c -> c + key[i%key.length].inverse() }
 
     override fun init(context: AppCompatActivity) {
-        context.findViewById<EditText>(R.id.cipher_vigenere_key).addTextChangedListener(object: TextWatcher{
+        context.findViewById<EditText>(R.id.cipher_single_key).addTextChangedListener(object: TextWatcher{
             override fun afterTextChanged(p0: Editable?) {
                 val tempKey = p0.toString().mapCharByChar {
                     if (!it.isLetter()) null

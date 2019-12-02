@@ -10,7 +10,7 @@ object MixedAlphabet : Cipher() {
     override val name = "Mixed Alphabet"
     override val description = ""
     override val imageId = R.drawable.vigenere_portrait
-    override val controlLayout = R.layout.cipher_vigenere
+    override val controlLayout = R.layout.cipher_single_key
     override val link = "https://crypto.interactive-maths.com/mixed-alphabet-cipher.html"
 
     private var alphabet: List<Char> = ('A'..'Z').toList()
@@ -20,7 +20,7 @@ object MixedAlphabet : Cipher() {
     override fun decode(ciphertext: String): String = ciphertext.mapLetters { alphabet.indexOf(it).toAlphabetChar() }
 
     override fun init(context: AppCompatActivity) {
-        context.findViewById<EditText>(R.id.cipher_vigenere_key).addTextChangedListener(object: TextWatcher{
+        context.findViewById<EditText>(R.id.cipher_single_key).addTextChangedListener(object: TextWatcher{
             override fun afterTextChanged(p0: Editable?) {
                 val key = p0.toString().mapCharByChar {
                     if (!it.isLetter()) null
