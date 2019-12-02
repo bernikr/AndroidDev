@@ -1,8 +1,9 @@
-package com.kralofsky.cipherbox
+package com.kralofsky.cipherbox.ciphers
 
 import android.widget.SeekBar
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.kralofsky.cipherbox.*
 
 object CaesarCipher : Cipher() {
     override val name = "Caesar Cipher"

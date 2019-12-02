@@ -9,6 +9,16 @@ fun String.mapCharByCharIndexed(transform: (index: Int, Char) -> Char) : String 
     return this.mapIndexed(transform).joinToString("") { it.toString() }
 }
 
+fun String.mapLetters(transform: (Char) -> Char) : String {
+    return this.map{
+        if (it.isLetter()) {
+            it.transformCaseIndependent(transform)
+        } else {
+            it
+        }
+    }.joinToString("") { it.toString() }
+}
+
 operator fun Char.plus(other: Char) : Char {
     return this.transformCaseIndependent {
         ((it.toAlphabetInt() + other.toAlphabetInt())%26).toAlphabetChar()

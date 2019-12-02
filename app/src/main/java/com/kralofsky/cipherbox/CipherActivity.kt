@@ -16,10 +16,14 @@ import android.widget.SimpleCursorAdapter
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.kralofsky.cipherbox.CipherBoxDbContract.HistoryEntry
+import com.kralofsky.cipherbox.ciphers.*
 
 
 val ciphers = listOf(
+    Rot13,
+    Atbash,
     CaesarCipher,
+    MixedAlphabet,
     VigenereCipher
 )
 
