@@ -24,7 +24,8 @@ val ciphers = listOf(
     Atbash,
     CaesarCipher,
     MixedAlphabet,
-    VigenereCipher
+    VigenereCipher,
+    RailfenceCipher
 )
 
 class CipherActivity : AppCompatActivity() {
