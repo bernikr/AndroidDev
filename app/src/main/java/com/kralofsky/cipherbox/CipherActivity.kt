@@ -27,7 +27,8 @@ val ciphers = listOf(
     VigenereCipher,
     AffineCipher,
     RailfenceCipher,
-    PolybusSquare
+    PolybusSquare,
+    Autokey
 )
 
 class CipherActivity : AppCompatActivity() {

@@ -46,3 +46,8 @@ fun Char.transformCaseIndependent(transform: (Char) -> Char) : Char {
     val v = transform.invoke(this.toUpperCase())
     return if (upperCase) v.toUpperCase() else v.toLowerCase()
 }
+
+fun String.clean(): String = this
+    .filter { it.isLetter() }
+    .map{ it.toLowerCase() }
+    .joinToString("")
