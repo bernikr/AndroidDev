@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <SeekBar
-        android:id="@+id/cipher_caesar_seekbar"
+        android:id="@+id/cipher_slider_seekbar"
         style="@style/Widget.AppCompat.SeekBar.Discrete"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -14,10 +13,9 @@
         android:progress="1" />
 
     <TextView
-        android:id="@+id/cipher_caesar_currentLetter"
+        android:id="@+id/cipher_slider_currentValue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ems="2"
-        android:text="B"
+        android:paddingEnd="5dp"
         android:textAlignment="center" />
 </LinearLayout>
