@@ -11,6 +11,7 @@ object MixedAlphabet : Cipher() {
     override val imageId = R.drawable.alphabet
     override val controlLayout = R.layout.cipher_single_key
     override val link = "https://crypto.interactive-maths.com/mixed-alphabet-cipher.html"
+    override val youtube: String = "H2vLu_vvAMA"
 
     private var alphabet: List<Char> = ('A'..'Z').toList()
 

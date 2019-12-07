@@ -11,6 +11,7 @@ object VigenereCipher : Cipher() {
     override val imageId = R.drawable.vigenere_portrait
     override val controlLayout = R.layout.cipher_single_key
     override val link = "https://en.wikipedia.org/wiki/Vigen%C3%A8re_cipher"
+    override val youtube = "SkJcmCaHqS0"
 
     private var key: String = "A"
 

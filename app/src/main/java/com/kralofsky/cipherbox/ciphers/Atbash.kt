@@ -7,6 +7,7 @@ object Atbash : Cipher() {
     override val name = "Atbash"
     override val imageId = R.drawable.alef
     override val link = "https://en.wikipedia.org/wiki/Atbash"
+    override val youtube = "YJMuUIIfMzg"
 
 
     override fun encode(cleartext: String): String = cleartext.mapLetters {

@@ -1,17 +1,17 @@
 package com.kralofsky.cipherbox.ciphers
 
-import android.os.Build
 import android.widget.SeekBar
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import com.kralofsky.cipherbox.*
-import kotlin.math.floor
+import com.kralofsky.cipherbox.Cipher
+import com.kralofsky.cipherbox.R
 
 object RailfenceCipher : Cipher() {
     override val name = "Railfence Cipher"
     override val imageId = R.drawable.railfence
     override val controlLayout = R.layout.cipher_slider
     override val link = "https://en.wikipedia.org/wiki/Rail_fence_cipher"
+    override val youtube = "OeAHJbBzpk4"
 
     var key = 1
 
