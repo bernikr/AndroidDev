@@ -25,6 +25,7 @@ val ciphers = listOf(
     CaesarCipher,
     MixedAlphabet,
     VigenereCipher,
+    AffineCipher,
     RailfenceCipher
 )
 
