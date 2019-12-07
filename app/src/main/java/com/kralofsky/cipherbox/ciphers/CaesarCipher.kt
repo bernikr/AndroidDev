@@ -7,7 +7,6 @@ import com.kralofsky.cipherbox.*
 
 object CaesarCipher : Cipher() {
     override val name = "Caesar Cipher"
-    override val description = ""
     override val imageId = R.drawable.ceasar_portrait
     override val controlLayout = R.layout.cipher_caesar
     override val youtube = "o6TPx1Co_wg"

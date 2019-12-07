@@ -5,7 +5,6 @@ import com.kralofsky.cipherbox.*
 
 object Rot13 : Cipher() {
     override val name = "ROT13"
-    override val description = ""
     override val imageId = R.drawable.rot13
     override val link = "https://en.wikipedia.org/wiki/ROT13"
 

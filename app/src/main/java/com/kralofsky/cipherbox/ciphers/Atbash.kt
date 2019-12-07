@@ -5,7 +5,6 @@ import com.kralofsky.cipherbox.*
 
 object Atbash : Cipher() {
     override val name = "Atbash"
-    override val description = ""
     override val imageId = R.drawable.alef
     override val link = "https://en.wikipedia.org/wiki/Atbash"
 

@@ -184,6 +184,7 @@ class CipherActivity : AppCompatActivity() {
 
 abstract class Cipher : MainMenuEntry {
     override val activity = CipherActivity::class
+    override val description = ""
     open val controlLayout: Int? = null
     open val youtube: String? = null
     open val link: String? = null
