@@ -12,7 +12,6 @@ import android.widget.ListView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat.startActivity
-import com.kralofsky.cipherbox.lab1.Lab1Activity
 import kotlin.reflect.KClass
 
 class MainMenuActivity : AppCompatActivity() {
@@ -20,15 +19,7 @@ class MainMenuActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.mainmenulayout)
 
-        val items = listOf(
-            *ciphers.toTypedArray(),
-            Lab1Activity,
-            Lab2Activity,
-            Lab3Activity
-        )
-
-
-        findViewById<ListView>(R.id.mainmenulist).adapter = MainMenuAdapter(this, items)
+        findViewById<ListView>(R.id.mainmenulist).adapter = MainMenuAdapter(this, ciphers)
     }
 }
 
