@@ -16,14 +16,9 @@
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
-        <activity android:name=".lab1.Lab1Activity" />
-        <activity android:name=".lab1.ListActivity" />
-        <activity android:name=".lab1.AddActivity" />
-        <activity android:name=".lab1.DisplayActivity" />
+
         <activity android:name=".CipherActivity"
             android:windowSoftInputMode="stateHidden|adjustResize" />
-        <activity android:name=".Lab2Activity" />
         <activity android:name=".CipherTheoryActivity" />
-        <activity android:name=".Lab3Activity" />
     </application>
 </manifest>
