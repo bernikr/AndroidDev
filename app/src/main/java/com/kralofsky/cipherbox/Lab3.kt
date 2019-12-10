@@ -133,6 +133,14 @@ class Lab3Activity : SensorEventListener, LocationListener, AppCompatActivity() 
                 var index = absoluteValues.indexOf(absoluteValues.max())
                 if (values[index] < 0) index += 3
 
+                //kill the app if the phone is upside down
+                if(index == 4){
+                    val homeIntent = Intent(Intent.ACTION_MAIN)
+                    homeIntent.addCategory(Intent.CATEGORY_HOME)
+                    homeIntent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+                    startActivity(homeIntent)
+                }
+
                 val string = listOf(
                     "Left side down",
                     "Upright",
