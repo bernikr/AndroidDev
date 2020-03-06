@@ -19,7 +19,7 @@ class MainMenuActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.mainmenulayout)
 
-        findViewById<ListView>(R.id.mainmenulist).adapter = MainMenuAdapter(this, ciphers)
+        findViewById<ListView>(R.id.mainmenulist).adapter = MainMenuAdapter(this, ciphers + DonateEntry)
     }
 }
 

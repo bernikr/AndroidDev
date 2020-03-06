@@ -2,6 +2,7 @@
     package="com.kralofsky.cipherbox">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="com.android.vending.BILLING" />
 
     <application
         android:allowBackup="true"
@@ -20,5 +21,6 @@
         <activity android:name=".CipherActivity"
             android:windowSoftInputMode="stateHidden|adjustResize" />
         <activity android:name=".CipherTheoryActivity" />
+        <activity android:name=".DonateActivity" />
     </application>
 </manifest>
